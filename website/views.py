@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.core.exceptions import PermissionDenied
-from django.http import HttpResponseNotFound
+from django.http import Http404
 from django.shortcuts import redirect
 import uuid
 from website.models import Pastes
@@ -27,4 +27,4 @@ def paste(req, uuid):
 			'data': p1.data
 		})
 	except:
-		return HttpResponseNotFound()
+		raise Http404
